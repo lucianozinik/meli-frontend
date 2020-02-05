@@ -10,6 +10,9 @@ import Results from './pages/results/ResultsPage';
 import './App.css';
 
 function App() {
+
+
+
   return (
     <>
       <SearchBar />
