@@ -25,7 +25,7 @@ const SearchBar = ({history}) => {
             <Content>
                 <Img src={logo}/>
                 <InputContainer>
-                <Form onSubmit={submitForm}>
+                <form onSubmit={submitForm} style={{display:'flex'}}>
                     <Input
                         placeholder="Nunca dejes de buscar"
                         value={search}
@@ -34,7 +34,7 @@ const SearchBar = ({history}) => {
                 <Button onClick={submitForm}>
                     <img src={searchImg}/>
                 </Button>
-                </Form>
+                </form>
                 </InputContainer>
 
             </Content>
