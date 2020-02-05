@@ -4,13 +4,15 @@ import { withRouter } from 'react-router-dom';
 
 import { getProducts } from '../../services'
 
-const ResultsPage = (props) => {
-    const search = queryString.parse(props.location.search).search
+const ResultsPage = ({history}) => {
+    console.log(history.location);
+    const search = queryString.parse(history.location.search).search
     const [productsList, setProductsList] = useState([])
 
     useEffect(() => {
         const fetchData = async (query) => {
           const result = await getProducts(query);
+          console.log(result)
           setProductsList(result);
         };
         fetchData(search);
