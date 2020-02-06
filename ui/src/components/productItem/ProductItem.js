@@ -1,13 +1,19 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Currency from 'react-currency-formatter';
 import free_shipping_image from '../../assets/ic_shipping.png'
 import { Container, Content, ProductImage, DataContainer, Price, Title, LocationContainer, Location, Row, LogoShipping } from './productItem.styles';
-const ProductItem = ({item}) => {
+const ProductItem = ({history, item}) => {
     console.log(item)
     console.log(item.price.amount.toFixed(item.price.decimals))
+
+    const goToItem = (id) => {
+        console.log(id)
+        history.push(`/items/${id}`)
+    }
     return(
         <Container>
-            <Content>
+            <Content onClick={() => goToItem(item.id)}>
                 <ProductImage src={item.picture}/>
                 <DataContainer>
                     <Row>
@@ -31,4 +37,4 @@ const ProductItem = ({item}) => {
     )
 }
 
-export default ProductItem
+export default withRouter(ProductItem);

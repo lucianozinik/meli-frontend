@@ -2,12 +2,13 @@ const items = require('express');
 const fetch = require('node-fetch');
 const formatItems = require('../utils/formatter');
 
-items.searchResult = function (req) {
+items.searchResult = async function (req, res) {
     const uri = 'https://api.mercadolibre.com/sites/MLA/search?q=' + req.query.q + '&limit=4';
-    fetch(uri)
+    let response = await fetch(uri)
         .then(res => res.json())
         .then(json => formatItems.formatter(json))
         .catch(err => console.log(err));
+        res.status(200).json(response);
 };
 
 items.itemDescription = async function (req) {
@@ -21,7 +22,10 @@ items.itemDescription = async function (req) {
     data = await item.json();
     data.description = description.plain_text;
 
-    await formatItems.formatter(data);
+    let response = await formatItems.formatter(data);
+
+    res.status(200).json(response);
+
 
 };
 

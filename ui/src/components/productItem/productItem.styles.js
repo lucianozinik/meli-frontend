@@ -10,6 +10,7 @@ export const Content = styled.div`
     display:flex;
     max-width:${variables.maxWidth};
     background-color:${variables.white};
+    cursor:pointer;
 
 `
 
@@ -22,6 +23,9 @@ export const LogoShipping = styled.div`
 `
 export const ProductImage = styled.div`
     background-image:url(${props => props.src});
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;
     width:180px;
     height:180px;
     border-radius:4px;
@@ -32,11 +36,12 @@ export const ProductImage = styled.div`
 export const DataContainer = styled.div`
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:flex-start;
 
 `
 export const Price = styled.h1`
     font-size:${variables.fsizeMid2};
+    margin:0;
 
 `
 export const Title = styled.h2`
@@ -57,5 +62,6 @@ export const Row = styled.div`
     display: flex;
     flex-direction:row;
     padding-bottom:${variables.padding};
+    margin-top:32px
 
 `
