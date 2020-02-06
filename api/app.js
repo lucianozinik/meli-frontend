@@ -4,10 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+require('dotenv');
+
 var indexRouter = require('./routes');
 var apiRouter = require('./routes/api');
 
 var app = express();
+
+const port = process.env.PORT;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,5 +41,10 @@ app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(port, () => {
+  console.log("Express listening on port:", port);
+});
+
 
 module.exports = app;

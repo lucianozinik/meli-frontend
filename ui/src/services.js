@@ -1,15 +1,20 @@
 import axios from 'axios';
-import { mock } from './mock';
-export const getProducts = async (search) => {
-    console.log("get products",search)
-    const url = search
+import CONSTANTS from './config/constants';
+
+export const getProducts = async search => {
+    const url = CONSTANTS.API_URL + '?=' + search;
     try {
-        //const list = await axios.get(url);
-        
-        return mock;
-
-    }catch(e){
-        console.log("error ",e.response)
+        return await axios.get(url);
+    } catch (e) {
+        return e.response;
     }
+};
 
-}
+export const getProductById = async id => {
+    const url = CONSTANTS.API_URL + id;
+    try {
+        return await axios.get(url);
+    } catch (e) {
+        return e.response;
+    }
+};
