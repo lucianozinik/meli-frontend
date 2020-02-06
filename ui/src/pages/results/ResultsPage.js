@@ -11,12 +11,14 @@ const ResultsPage = ({history}) => {
     console.log(history.location);
     const search = queryString.parse(history.location.search).search
     const [productsList, setProductsList] = useState([])
+    const [breadCrumbs, setBreadCrumbs] = useState([])
 
     useEffect(() => {
         const fetchData = async (query) => {
           const result = await getProducts(query);
           console.log(result)
           setProductsList(result.items);
+          setBreadCrumbs(result.categories)
         };
         fetchData(search);
       }, []);
@@ -25,7 +27,7 @@ const ResultsPage = ({history}) => {
     return (
         <Container>
             <Content>
-            <Breadcrumbs/>
+            <Breadcrumbs data={breadCrumbs}/>
             <List>
                 { 
                     productsList.map(item => {

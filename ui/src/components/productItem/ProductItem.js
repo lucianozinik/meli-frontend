@@ -4,6 +4,7 @@ import free_shipping_image from '../../assets/ic_shipping.png'
 import { Container, Content, ProductImage, DataContainer, Price, Title, LocationContainer, Location, Row, LogoShipping } from './productItem.styles';
 const ProductItem = ({item}) => {
     console.log(item)
+    console.log(item.price.amount.toFixed(item.price.decimals))
     return(
         <Container>
             <Content>
@@ -11,9 +12,8 @@ const ProductItem = ({item}) => {
                 <DataContainer>
                     <Row>
                         <Price><Currency
-                                                    quantity={item.price.amount}          // Required
+                                                    quantity={item.price.amount.toFixed(item.price.decimals)}          // Required
                                                     currency="USD"            // Optional (USD by default)
-                                                    pattern="^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$"        // Optional
                                                     decimal=","               // Optional
                                                     group="."                 // Optional
                                                     />
