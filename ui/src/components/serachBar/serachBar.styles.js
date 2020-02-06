@@ -34,9 +34,20 @@ export const Input = styled.input`
 
 export const Button = styled.button`
     padding:5px;
-
+    border:none;
+    text-decoration:none;
 `
 
 export const Img = styled.img`
     
+`
+
+export const LogoML = styled.div`
+    background-image:url(${props => props.src});
+    background-position:center;
+    background-size:contain;
+    background-repeat:no-repeat;
+    width:45px;
+    margin: 5px;
+
 `

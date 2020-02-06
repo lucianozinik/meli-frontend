@@ -3,6 +3,9 @@ import queryString from 'query-string';
 import { withRouter } from 'react-router-dom';
 
 import { getProducts } from '../../services'
+import { Container, Content, List } from './resultsPage.styles';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+import ProductItem from '../../components/productItem/ProductItem';
 
 const ResultsPage = ({history}) => {
     console.log(history.location);
@@ -13,21 +16,27 @@ const ResultsPage = ({history}) => {
         const fetchData = async (query) => {
           const result = await getProducts(query);
           console.log(result)
-          setProductsList(result);
+          setProductsList(result.items);
         };
         fetchData(search);
       }, []);
 
     console.log(search)
     return (
-        <>
-            { 
-                productsList ? 
-                <h1>Hay lista!</h1>
-                :
-                <h1> No hay lista</h1>
-            }
-        </>
+        <Container>
+            <Content>
+            <Breadcrumbs/>
+            <List>
+                { 
+                    productsList.map(item => {
+                        return (
+                            <ProductItem key={ item.id } item={item}/>
+                        )
+                    })
+                }
+            </List>
+            </Content>
+        </Container>
     )
 }
 
