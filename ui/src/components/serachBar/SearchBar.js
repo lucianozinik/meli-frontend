@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom';
-import { Container, Content, InputContainer, Input, Button, Img, Form } from './serachBar.styles';
+import { Container, Content, InputContainer, Input, Button, LogoML } from './serachBar.styles';
 import searchImg from '../../assets/ic_Search.png';
 import logo from '../../assets/Logo_ML.png';
 const SearchBar = ({history}) => {
@@ -23,7 +23,7 @@ const SearchBar = ({history}) => {
     return (
         <Container>
             <Content>
-                <Img src={logo}/>
+                <LogoML src={logo}/>
                 <InputContainer>
                 <form onSubmit={submitForm} style={{display:'flex'}}>
                     <Input
