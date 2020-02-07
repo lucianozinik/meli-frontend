@@ -29,13 +29,15 @@ export const Form = styled.div`
 export const Input = styled.input`
     width:100%;
     font-size:${variables.fsizeMid1};
-    padding:5px;
+    padding: 5px 15px;
+    border: none;
 `
 
 export const Button = styled.button`
     padding:5px;
     border:none;
     text-decoration:none;
+    cursor:pointer;
 `
 
 export const Img = styled.img`
