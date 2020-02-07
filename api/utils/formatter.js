@@ -11,7 +11,7 @@ let formatItem = function (item, soldQuantityRequired) {
             amount: Math.floor(item.price),
             decimals: item.price % 1,
         },
-        picture: item.secure_thumbnail ? item.secure_thumbnail : item.thumbnail,
+        picture: item.pictures? item.pictures[0].secure_url : item.thumbnail,
         condition: item.condition,
         free_shipping: item.shipping.free_shipping,
         sold_quantity: soldQuantityRequired ? item.sold_quantity : null,
@@ -20,7 +20,6 @@ let formatItem = function (item, soldQuantityRequired) {
 };
 
 module.exports.formatter = function (obj) {
-    console.log(obj)
     // If obj.results exists, it means this func is being called with a list of items, then we asign them to the variable called "items", if not, we get the entire object, i.e the only item.
     let items = obj.results ? obj.results : obj;
     let categories = obj.filters ? obj.filters.find(
