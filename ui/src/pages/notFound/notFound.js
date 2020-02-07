@@ -1,10 +1,11 @@
+
 import React from 'react'
-const HomePage = () => {
+const NotFound = () => {
     return (
         <div style={{width:'100vw',height:'100vh', display:'flex',justifyContent:'center', alignItems:'center'}}>
-            <h1>Bienvenido a Mercadolibre!</h1>
+            <h1>Ups... al parecer esta pagina no existe!</h1>
         </div>
     )
 }
 
-export default HomePage;
+export default NotFound;

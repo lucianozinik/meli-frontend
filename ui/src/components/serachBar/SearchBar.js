@@ -16,14 +16,17 @@ const SearchBar = ({history}) => {
     const submitForm = (e) => {
         e.preventDefault();
         console.log(history)
-        history.push(`/items?search=${search}`)
+        if(search !== ''){
+
+            history.push(`/items?search=${search}`)
+        }
 
     }
 
     return (
         <Container>
             <Content>
-                <LogoML src={logo}/>
+                <LogoML src={logo} onClick={() => history.push("/")}/>
                 <InputContainer>
                 <form onSubmit={submitForm} style={{display:'flex'}}>
                     <Input

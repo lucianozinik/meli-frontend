@@ -7,7 +7,7 @@ import SearchBar from './components/serachBar/SearchBar';
 import Home from './pages/home/HomePage';
 import Details from './pages/details/DetailsPage';
 import Results from './pages/results/ResultsPage';
-import Breadcrumbs from './components/breadcrumbs/Breadcrumbs';
+import NotFound from './pages/notFound/notFound';
 
 
 import './App.css';
@@ -23,6 +23,7 @@ const App = ({history}) => {
         <Route exact path='/' component={Home} />
         <Route exact path='/items'   render={(props) => <Results {...props} />} />
         <Route exact path='/items/:id' component={Details} />
+        <Route component={NotFound}/>
       </Switch>
     </>
   );

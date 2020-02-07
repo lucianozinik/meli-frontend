@@ -1,23 +1,21 @@
 import React, {useState, useEffect } from 'react'
-import { withRouter } from 'react-router-dom';
-
-import Currency from 'react-currency-formatter';
+import { formatPrice } from '../../utils/utils';
 import free_shipping_image from '../../assets/ic_shipping.png'
-
 import { getProductById } from '../../services'; 
 import { Container, Content } from './detailsPage.styles';
 import { ProductImage, Row, InfoContainer, 
-    DescripD, TitleD, DescriptionContainer,
-     Status, Title, PriceRow, Price, LogoShipping } from './detailsPage.styles';
+         DescripD, TitleD, DescriptionContainer,
+         Status, Title, PriceRow, Price,
+         LogoShipping, Button } from './detailsPage.styles';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
+
+
 
 const DetailsPage = ({match}) => {
 
   const [product, setProduct] = useState(null)
   const [breadCrumbs, setBreadCrumbs] = useState([])
 
-
-    console.log(match.params)
   useEffect(() => {
     const fetchData = async (query) => {
       const result = await getProductById(query);
@@ -35,28 +33,27 @@ const DetailsPage = ({match}) => {
     return (
 
         <Container>
-                        <Breadcrumbs data={breadCrumbs}/>
+            <Breadcrumbs data={breadCrumbs}/>
             {
                 product ? 
-            
             <Content>
                 <Row>
                     <ProductImage src={product.picture}>
 
                     </ProductImage>
                     <InfoContainer>
-                        <Status>{product.condition}</Status>
+                    <Status>{product.condition} - {product.sold_quantity} vendidos</Status>
                         <Title>{product.title}</Title>
                         <PriceRow>
-                            <Price><Currency
-                                                        quantity={product.price.amount.toFixed(product.price.decimals)}          // Required
-                                                        currency="USD"            // Optional (USD by default)
-                                                        decimal=","               // Optional
-                                                        group="."                 // Optional
-                                                        />
+
+                            
+                            <Price>
+                                { formatPrice(product.price.amount, product.price.decimals) }
                             </Price>
                             { product.free_shipping ? <LogoShipping src={free_shipping_image} /> : null }
                         </PriceRow>
+                        <Button> <p> Comprar </p></Button>
+
 
                     </InfoContainer>
 
@@ -68,6 +65,7 @@ const DetailsPage = ({match}) => {
                     <DescripD>
                         {product.description}
                     </DescripD>
+
                 </DescriptionContainer>
 
             </Content>
