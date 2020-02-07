@@ -92,15 +92,15 @@ export const Button = styled.div`
     border-radius:4px;
     cursor:pointer;
     transition:transform .1s ease-in;
-
-    p{
-        color:${variables.white};
-    }
     &:hover{
         transform:scale(1.02)
     }
     &:active{
         transform:scale(.99)
     }
+    p{
+        color:${variables.white};
+    }
+
 
 `
