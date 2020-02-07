@@ -11,7 +11,9 @@ export const Content = styled.div`
     margin:0 auto;
     padding:5px 0 ;
     display:flex;
+    flex-direction:column;
     width:100%;
+
 
 `
 
@@ -29,10 +31,10 @@ export const ProductImage = styled.div`
 
 `
 
-export const DescripD = styled.div`
+export const DescripD = styled.p`
 
 `
-export const TitleD = styled.div`
+export const TitleD = styled.h1`
 
 `
 export const InfoContainer = styled.div`
@@ -45,7 +47,6 @@ export const DescriptionContainer = styled.div`
 
 export const Row = styled.div`
     display:flex;
-    
 
 `
 

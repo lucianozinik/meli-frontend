@@ -6,11 +6,16 @@ import free_shipping_image from '../../assets/ic_shipping.png'
 
 import { getProductById } from '../../services'; 
 import { Container, Content } from './detailsPage.styles';
-import { ProductImage, Row, InfoContainer, DescripD, TitleD, DescriptionContainer, Status, Title, PriceRow, Price, LogoShipping } from './detailsPage.styles';
+import { ProductImage, Row, InfoContainer, 
+    DescripD, TitleD, DescriptionContainer,
+     Status, Title, PriceRow, Price, LogoShipping } from './detailsPage.styles';
+import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 
 const DetailsPage = ({match}) => {
 
   const [product, setProduct] = useState(null)
+  const [breadCrumbs, setBreadCrumbs] = useState([])
+
 
     console.log(match.params)
   useEffect(() => {
@@ -20,6 +25,9 @@ const DetailsPage = ({match}) => {
       if(result.data){
           setProduct(result.data.items);
       }
+      if(result.data.categories) {
+        setBreadCrumbs(result.data.categories)
+    }
     };
     fetchData(match.params.id);
   }, [match.params]);
@@ -27,6 +35,7 @@ const DetailsPage = ({match}) => {
     return (
 
         <Container>
+                        <Breadcrumbs data={breadCrumbs}/>
             {
                 product ? 
             
@@ -54,10 +63,10 @@ const DetailsPage = ({match}) => {
                 </Row>
                 <DescriptionContainer>
                     <TitleD>
-
+                        Descripción del producto
                     </TitleD>
                     <DescripD>
-
+                        {product.description}
                     </DescripD>
                 </DescriptionContainer>
 
