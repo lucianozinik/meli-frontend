@@ -24,7 +24,7 @@ const App = ({history}) => {
     const fetchData = async (query) => {
       const result = await getProducts(query);
       console.log(result.data.items)
-      if(result.data.items[0]){
+      if(result.data.items){
           setProductsList(result.data.items[0]);
       }
       if(result.data.categories) {

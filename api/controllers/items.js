@@ -11,7 +11,7 @@ items.searchResult = async function (req, res) {
         res.status(200).json(response);
 };
 
-items.itemDescription = async function (req) {
+items.itemDescription = async function (req, res) {
     const uri = 'https://api.mercadolibre.com/items/' + req.params.id;
     let data;
     let item = await fetch(uri)

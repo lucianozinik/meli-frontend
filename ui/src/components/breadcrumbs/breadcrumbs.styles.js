@@ -7,9 +7,16 @@ export const Text = styled.p`
 `
 
 export const Container = styled.div`
+    display:flex;
+    justify-content:center;
 
 `
 
 export const Content = styled.div`
     display:flex;
+    max-width:${variables.maxWidth};
+    width:100%;
+
+    cursor:pointer;
+
 `
