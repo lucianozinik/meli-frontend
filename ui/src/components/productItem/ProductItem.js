@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import Currency from 'react-currency-formatter';
+import { formatPrice } from '../../utils/utils';
 import free_shipping_image from '../../assets/ic_shipping.png'
 import { Container, Content, ProductImage, DataContainer, Price, Title, LocationContainer, Location, Row, LogoShipping } from './productItem.styles';
 const ProductItem = ({history, item}) => {
@@ -17,12 +17,8 @@ const ProductItem = ({history, item}) => {
                 <ProductImage src={item.picture}/>
                 <DataContainer>
                     <Row>
-                        <Price><Currency
-                                                    quantity={item.price.amount.toFixed(item.price.decimals)}          // Required
-                                                    currency="USD"            // Optional (USD by default)
-                                                    decimal=","               // Optional
-                                                    group="."                 // Optional
-                                                    />
+                        <Price>
+                            { formatPrice(item.price.amount, item.price.decimals) }
                         </Price>
                         { item.free_shipping ? <LogoShipping src={free_shipping_image} /> : null }
                     </Row>
