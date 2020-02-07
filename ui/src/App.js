@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Switch, Route, withRouter } from 'react-router-dom';
+
+
+
+import SearchBar from './components/serachBar/SearchBar';
+import Home from './pages/home/HomePage';
+import Details from './pages/details/DetailsPage';
+import Results from './pages/results/ResultsPage';
+import NotFound from './pages/notFound/notFound';
+
+
 import './App.css';
 
-function App() {
+const App = ({history}) => {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <SearchBar />
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/items'   render={(props) => <Results {...props} />} />
+        <Route exact path='/items/:id' component={Details} />
+        <Route component={NotFound}/>
+      </Switch>
+    </>
   );
 }
 
-export default App;
+export default withRouter(App);
